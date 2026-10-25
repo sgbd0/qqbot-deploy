@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: astrbot-qq
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: GITHUB_REPO
+        sync: false        # e.g. sgbd0/astrbot-qq-backup
+      - key: GITHUB_PAT
+        sync: false        # GitHub PAT with repo scope (kept secret by Render)

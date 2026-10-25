@@ -1,0 +1,4 @@
+# Normalize line endings: shell scripts MUST be LF for the Linux container
+* text=auto eol=lf
+*.png binary
+*.jpg binary
