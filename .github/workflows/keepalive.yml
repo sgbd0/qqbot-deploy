@@ -1,0 +1,17 @@
+name: keepalive
+
+# Render free tier sleeps the service after 15 minutes without inbound traffic.
+# Public repos get unlimited Actions minutes, so this pinger runs here.
+on:
+  schedule:
+    - cron: "*/6 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ping service
+        run: |
+          code=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 30 "${{ secrets.RENDER_URL }}" || true)
+          echo "ping result: $code"
